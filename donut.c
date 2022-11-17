@@ -1,5 +1,5 @@
 /*
-   Spinning donut 3D with option of playback music
+   Spinning 3D donut with option of playback music
     Original video: https://www.youtube.com/watch?v=DEqXNfs_HhY
     Modifier for featuring playback music and speed adjustment: https://github.com/BurntRanch/
 
