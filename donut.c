@@ -11,11 +11,23 @@
 #include <string.h>
 #include <stdlib.h>
 #include <vlc/vlc.h>
+#include <signal.h>
+
+libvlc_instance_t * inst;
+libvlc_media_player_t *mp;
+
+void end()
+{
+    printf("Bye!\n");
+    libvlc_media_player_stop(mp);
+    libvlc_media_player_release(mp);
+    libvlc_release(inst);
+    exit(0);
+}
+
 
 int main(int argc, char* argv[])
 {
-    libvlc_instance_t * inst;
-    libvlc_media_player_t *mp;
     libvlc_media_t *m;
 
     /* Load the VLC engine */
@@ -29,7 +41,8 @@ int main(int argc, char* argv[])
 
     /* Create a media player playing environement */
     mp = libvlc_media_player_new_from_media (m);
-
+    signal(SIGINT, end);
+    signal(SIGTERM, end);
     /* No need to keep the media now */
     libvlc_media_release (m);
 
@@ -46,9 +59,9 @@ int main(int argc, char* argv[])
     printf("\n%f\n", Xspeed);
     libvlc_media_player_play(mp);
     printf("\x1b[2J");
-    for(;;) {
-        memset(b,32,1760);
-        memset(z,0,7040);
+    while (1) {
+        memset(b, 32, 1760);
+        memset(z, 0, 7040);
         for(j=0; j < 6.28; j += 0.07) {
             for(i=0; i < 6.28; i += 0.02) {
                 float c = sin(i);
@@ -63,7 +76,7 @@ int main(int argc, char* argv[])
                 float n = sin(B);
                 float t = c * h * g - f * e;
                 int x = 40 + 30 * D * (l * h * m - t * n);
-                int y= 12 + 15 * D * (l * h * n + t * m);
+                int y = 12 + 15 * D * (l * h * n + t * m);
                 int o = x + 80 * y;
                 int N = 8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n);
                 if(22 > y && y > 0 && x > 0 && 80 > x && D > z[o]) {
@@ -85,14 +98,6 @@ int main(int argc, char* argv[])
         B += Yspeed;
         usleep(30000);
     }
-
-    /* Stop playing */
-    libvlc_media_player_stop (mp);
-
-    /* Free the media_player */
-    libvlc_media_player_release (mp);
-
-    libvlc_release (inst);
 
     return 0;
 }
