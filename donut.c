@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     /* Load the VLC engine */
     inst = libvlc_new (0, NULL);
     
-    printf("Enter the name of the music you would like to play: ");
+    printf("Enter the name of the path and/or file you would like to play: ");
     char file_name[256];
     scanf("%256s", &file_name);
     printf("%s\n", file_name);
