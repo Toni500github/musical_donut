@@ -10,7 +10,9 @@ just some spinning 3d donut but with the option to choose which song you want to
 ```bash
 bash compile.sh 
 ```
-### Windows
-idk
+### Windows (MinGW-64) (you will need to setup the VLC library in your windows host)
+```bash
+gcc donut.c -o donut.exe -lvlc -lm
+```
 ### MacOS
 man we poor lmao
