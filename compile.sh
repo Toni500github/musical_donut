@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
-printf "\e[1;34mDetecting vlc headers... \n\n"
+
+#Created by https://github.com/Toni500github
+#Used for https://github.com/Toni500github/musical_donut
+
+printf "\e[1;34mChecking libvlc headers... \n\n"
 sleep 1
 
-## see if you have installed libvlc-dev
+## check if you have installed libvlc-dev
 function detect_libvlc() {
   if [[ ! -d /usr/include/vlc || ! -f /usr/include/vlc/vlc.h ]]; then
-    printf "\e[1;31m Please install libvlc-bin or libvlc-dev \n"
+    printf "\e[1;31mPlease install libvlc-dev with your packages manager\n"
     exit  1
   else
-    printf "\e[1;32mvlc headers are installed! \n"
+    printf "\e[1;32mlibvlc headers are installed! \n"
     printf "compiling donut.c ... \n\n"
     sleep 1
   fi
