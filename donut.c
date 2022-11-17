@@ -1,8 +1,8 @@
-/* 
+/*
    Spinning donut 3D with option of playback music
     Original video: https://www.youtube.com/watch?v=DEqXNfs_HhY
     Modifier for featuring playback music and speed adjustment: https://github.com/BurntRanch/
-    
+
    Using libvlc with license GPL-2.0-or-later with some libraries under LGPL-2.1-or-later VLC for iOS (MPLv2.0)
 */
 
@@ -12,16 +12,16 @@
 #include <stdlib.h>
 #include <vlc/vlc.h>
 
-int main(int argc, char* argv[]) 
+int main(int argc, char* argv[])
 {
     libvlc_instance_t * inst;
     libvlc_media_player_t *mp;
     libvlc_media_t *m;
-     
+
     /* Load the VLC engine */
     inst = libvlc_new (0, NULL);
-    
-    printf("Enter the name of the path and/or file you would like to play: ");
+
+    printf("Enter the name of the path and/or file you would like to play (only audio): ");
     char file_name[256];
     scanf("%256s", &file_name);
     printf("%s\n", file_name);
@@ -32,10 +32,10 @@ int main(int argc, char* argv[])
 
     /* No need to keep the media now */
     libvlc_media_release (m);
-     
+
     /* play the media_player */
     libvlc_media_player_play (mp);
-    
+
     float A = 0, B = 0;
     float i, j;
     int k;
@@ -87,9 +87,9 @@ int main(int argc, char* argv[])
     libvlc_media_player_stop (mp);
 
     /* Free the media_player */
-    libvlc_media_player_release (mp);    
+    libvlc_media_player_release (mp);
 
     libvlc_release (inst);
-     
+
     return 0;
 }
