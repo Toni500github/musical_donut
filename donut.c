@@ -75,6 +75,11 @@ int main(int argc, char* argv[])
             }
         }
         printf("\x1b[H");
+        if (!libvlc_media_player_is_playing(mp))
+        {
+            libvlc_media_player_stop(mp);
+            libvlc_media_player_play(mp);
+        }
         for(k = 0; k < 1761; k++) {
             putchar(k % 80 ? b[k] : 10);
         }
