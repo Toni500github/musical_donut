@@ -3,7 +3,6 @@
 #Created by https://github.com/Toni500github
 #Used for https://github.com/Toni500github/musical_donut
 DIR=$(dirname $0)
-pkg=vlc
 
 printf "\e[1;34mChecking libvlc headers... \n\n"
 sleep 1
@@ -45,10 +44,10 @@ function compile() {
 
 function detect_termux() {
 arch=$(uname -i)
-  if [ "$arch" == 'aarch64' || "$arch" == 'unknown' ]; then
+  if [[ $arch == aarch64 ]] || [[ $arch = unknown ]]; then
     detect_libvlc_termux
     compile
-  else
+  elif [[ $arch == x86_64 ]]; then
     detect_libvlc
     compile
   fi
