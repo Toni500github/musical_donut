@@ -33,9 +33,6 @@ int main(int argc, char* argv[])
     /* No need to keep the media now */
     libvlc_media_release (m);
 
-    /* play the media_player */
-    libvlc_media_player_play (mp);
-
     float A = 0, B = 0;
     float i, j;
     int k;
@@ -47,6 +44,7 @@ int main(int argc, char* argv[])
     float Xspeed = 7.044 / pow(10, input);
     float Yspeed = 3.522 / pow(10, input);
     printf("\n%f\n", Xspeed);
+    libvlc_media_player_play(mp);
     printf("\x1b[2J");
     for(;;) {
         memset(b,32,1760);
