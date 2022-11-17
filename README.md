@@ -15,4 +15,4 @@ bash compile.sh
 gcc donut.c -o donut.exe -lvlc -lm
 ```
 ### MacOS
-man we poor lmao
+if you have one and compiled the donut, send pull request about how to compile for MacOS
