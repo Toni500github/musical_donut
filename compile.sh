@@ -44,8 +44,8 @@ function compile() {
 }
 
 function detect_termux() {
-  arch=$(uname -i)
-  if [[ "$arch" == 'aarch64' || "$arch" == 'unknown']] then
+arch=$(uname -i)
+  if [ "$arch" == 'aarch64' || "$arch" == 'unknown' ]; then
     detect_libvlc_termux
     compile
   else
