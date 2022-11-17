@@ -1,4 +1,7 @@
-	     k;double sin()
+// Original or Found from https://www.a1k0n.net/2011/07/20/donut-math.html	     
+
+
+             k;double sin()
          ,cos();main(){float A=
        0,B=0,i,j,z[1760];char b[
      1760];printf("\x1b[2J");for(;;
@@ -17,5 +20,5 @@ in(B),t=c*h*g-f*        e;int x=40+30*D*
    putchar(k%80?b[k]:10);A+=0.04;B+=
      0.02;}}/*****####*******!!=;:~
        ~::==!!!**********!!!==::-
-         .,~~GUK=====493==;;;:~-.
+         .,~~;;;========;;;:~-.
              ..,--------,*/
