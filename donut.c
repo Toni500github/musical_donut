@@ -1,7 +1,7 @@
 /* 
    Spinning donut 3D with option of playback music
     Original video: https://www.youtube.com/watch?v=DEqXNfs_HhY
-    Modifier for featuring playback music: https://github.com/BurntRanch/
+    Modifier for featuring playback music and speed adjustment: https://github.com/BurntRanch/
     
    Using libvlc with license GPL-2.0-or-later with some libraries under LGPL-2.1-or-later VLC for iOS (MPLv2.0)
 */
