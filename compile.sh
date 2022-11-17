@@ -47,7 +47,7 @@ arch=$(uname -i)
   if [[ $arch == aarch64 ]] || [[ $arch = unknown ]]; then
     detect_libvlc_termux
     compile
-  elif [[ $arch == x86_64 ]]; then
+  else
     detect_libvlc
     compile
   fi
