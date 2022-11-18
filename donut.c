@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <vlc/vlc.h>
 #include <signal.h>
-#include <coreutils.h>
 
 libvlc_instance_t * inst;
 libvlc_media_player_t *mp;
@@ -55,8 +54,8 @@ int main(int argc, char* argv[])
     float input;
     printf("Insert speed: ");
     scanf("%f", &input);
-    float Xspeed = 7.044 / pow(10, input);
-    float Yspeed = 3.522 / pow(10, input);
+    float Xspeed = (input / 100000) * 1761;
+    float Yspeed = Xspeed / 2;
     printf("\n%f\n", Xspeed);
     libvlc_media_player_play(mp);
     printf("\x1b[2J");
