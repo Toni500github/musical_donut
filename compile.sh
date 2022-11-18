@@ -5,11 +5,19 @@
 DIR=$(dirname $0)
 
 printf "\e[1;34mChecking libvlc headers... \n\n"
-sleep 0.7
+sleep 0.4
 
 ## if donut exists already, it will remove it
 if [[ -f $DIR/donut ]]; then
-  rm $DIR/donut
+  printf "donut exists already, overwrite? "
+  read yn
+  case $yn in
+    y|Y|ye|yeah|yes|YES|Yes|yep|Es|es|YeS)
+    detect_termux
+  ;;
+    n|N|NO|no|nO|No|nope|NOPE|o|O)
+    printf ""
+  esac
 fi
 
 ## check if you have installed libvlc-dev
@@ -30,7 +38,7 @@ function compile() {
     printf "\e[1;31mdonut.c not found in this directory \n"
     exit 1
   else
-    gcc $DIR/donut.c -o $DIR/donut -lm -lvlc -Wno-everything
+    gcc $DIR/donut.c -o $DIR/donut -w -lm -lvlc
   fi
 
 ## this will detect if donut is there after compiling
