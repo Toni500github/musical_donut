@@ -6,7 +6,7 @@ just some spinning 3d donut but with the option to choose which song you want to
 
 # How to use/compile
 
-### Linux
+### Linux/Termux(aarch64)
 ```bash
 bash compile.sh
 ```
@@ -18,4 +18,4 @@ gcc donut.c -o donut.exe -lvlc -lm
 if you have one and compiled the donut, send pull request about how to compile for MacOS
 
 # Know bugs
-* the speed of the donut is too fast
+For now none, but you can still open an issue
