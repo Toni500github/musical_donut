@@ -23,4 +23,4 @@ gcc donut.c -o donut.exe -lvlc -lm
 if you have one and compiled the donut, send pull request about how to compile for MacOS
 
 # Know bugs
-For now none, but you can still open an issue
+* Donut speed too high even with 0
