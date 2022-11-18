@@ -36,7 +36,6 @@ int main(int argc, char* argv[])
     printf("Enter the name of the path and/or file you would like to play (only audio): ");
     char *file_name = malloc(256);
     scanf("%255s", file_name);
-    printf("%s\n", file_name);
     m = libvlc_media_new_path (inst, file_name);
 
     /* Create a media player playing environement */
@@ -52,11 +51,11 @@ int main(int argc, char* argv[])
     float z[1760];
     char b[1760];
     float input;
-    printf("Insert speed: ");
+    printf("\nInsert speed: ");
     scanf("%f", &input);
     float Xspeed = (input / 100000) * 1761;
     float Yspeed = Xspeed / 2;
-    printf("\n%f\n", Xspeed);
+    printf("\n");
     libvlc_media_player_play(mp);
     printf("\x1b[2J");
     while (1) {
@@ -64,7 +63,7 @@ int main(int argc, char* argv[])
         memset(z, 0, 7040);
         for(j=0; j < 6.28; j += 0.07) {
             for(i=0; i < 6.28; i += 0.02) {
-                float c = sin(i);
+               float c = sin(i);
                 float d = cos(j);
                 float e = sin(A);
                 float f = sin(j);
