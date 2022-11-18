@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <vlc/vlc.h>
 #include <signal.h>
+#include <coreutils.h>
 
 libvlc_instance_t * inst;
 libvlc_media_player_t *mp;
@@ -34,8 +35,8 @@ int main(int argc, char* argv[])
     inst = libvlc_new (0, NULL);
 
     printf("Enter the name of the path and/or file you would like to play (only audio): ");
-    char file_name[256];
-    scanf("%256s", &file_name);
+    char *file_name = malloc(256);
+    scanf("%255s", file_name);
     printf("%s\n", file_name);
     m = libvlc_media_new_path (inst, file_name);
 
