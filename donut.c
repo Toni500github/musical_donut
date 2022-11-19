@@ -54,8 +54,8 @@ int main(int argc, char* argv[])
     float input;
     printf("Insert speed: ");
     scanf("%f", &input);
-    float Xspeed = 7.044 / pow(10, input);
-    float Yspeed = 3.522 / pow(10, input);
+    float Xspeed = input / 100;
+    float Yspeed = Xspeed / 2;
     printf("\n%f\n", Xspeed);
     libvlc_media_player_play(mp);
     printf("\x1b[2J");
