@@ -8,17 +8,20 @@ printf "\e[1;34mChecking libvlc headers... \n\n"
 sleep 0.4
 
 ## if donut exists already, it will remove it
+function donut_exists() {
 if [[ -f $DIR/donut ]]; then
   printf "donut exists already, overwrite? "
   read yn
   case $yn in
     y|Y|ye|yeah|yes|YES|Yes|yep|Es|es|YeS)
-    detect_termux
-  ;;
+    rm $DIR/donut
+ ;;
     n|N|NO|no|nO|No|nope|NOPE|o|O)
-    printf ""
+    printf "\e[1;32mdonut not overwrite\n"
+    exit 0
   esac
 fi
+}
 
 ## check if you have installed libvlc-dev
 function detect_libvlc() {
@@ -46,10 +49,11 @@ function compile() {
     printf " \e[1;31mdonut not compiled successfully \n"
     exit 1
   else
-    printf "\e[1;34mdonut compiled, now run you can ./donut \nStarting donut ...\e[0m\n"
+    printf "\e[1;32mdonut compiled, now run you can ./donut \n\e[1;34mStarting donut...\e[0m\n"
   fi
 }
 
+## check if you are rumning android and Termux
 function detect_termux() {
 arch=$(uname -o)
   if [[ $arch == Android ]] && [[ -d /data/data/com.termux/files/usr/bin/ ]]; then
@@ -61,6 +65,7 @@ arch=$(uname -o)
   fi
 }
 
+## same thing with detect_libvlc but for termux
 function detect_libvlc_termux() {
   if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
     printf "\e[1;31mPlease run pkg install vlc\n"
@@ -72,6 +77,7 @@ function detect_libvlc_termux() {
   fi
 }
 
-## calls fuctions
+## calls functions and execute donut
+donut_exists
 detect_termux
 chmod +x $DIR/donut && cd $DIR && ./donut
