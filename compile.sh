@@ -5,7 +5,6 @@
 DIR=$(dirname $0)
 
 printf "\e[1;34mChecking libvlc headers... \n\n"
-sleep 0.4
 
 ## if donut exists already, it will remove it
 function donut_exists() {
@@ -31,7 +30,6 @@ function detect_libvlc() {
   else
     printf "\e[1;32mlibvlc headers are installed! \n"
     printf "\e[1;34mcompiling donut.c ... \n\n"
-    sleep 0.5
   fi
 }
 
@@ -73,7 +71,6 @@ function detect_libvlc_termux() {
   else
     printf "\e[1;32mlibvlc headers are installed! \n"
     printf "\e[1;34mcompiling donut.c ... \n\n"
-    sleep 0.7
   fi
 }
 
