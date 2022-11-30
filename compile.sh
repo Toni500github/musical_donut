@@ -39,7 +39,7 @@ function compile {
     printf "\e[1;31mdonut.c not found in this directory \n"
     exit 1
   else
-    gcc $DIR/donut.c -o $DIR/donut -w -lm -lvlc
+    gcc $DIR/donut.c -o $DIR/donut -lm -lvlc
   fi
 
 ## this will detect if donut is there after compiling

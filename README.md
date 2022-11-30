@@ -12,8 +12,9 @@ bash compile.sh
 ```
 or
 ```bash
-make //for removing donut: make clean
-./donut.o
+make
+//removing donut
+make clean
 ```
 ### Windows (MinGW-64) (you will need to setup the VLC library in your windows host)
 ```bash

@@ -1,7 +1,7 @@
-LDLIBS := -w -lm -lvlc
+LDLIBS := -lm -lvlc
 DONUT := donut
 
-all: $(DONUT)
+all: $(DONUT); ./$(DONUT)
 
 clean: 
 	rm -f $(DONUT)
