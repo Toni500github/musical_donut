@@ -4,8 +4,11 @@ just some spinning 3D donut but with the option to choose which song you want to
 
 [Original Video with source code](https://www.youtube.com/watch?v=DEqXNfs_HhY)
 
+# Dependencies
+```bash
+libvlc-dev vlc
+```
 # How to use/compile
-
 ### Linux/Termux
 ```bash
 bash compile.sh
@@ -13,12 +16,10 @@ bash compile.sh
 or
 ```bash
 make
-//removing donut
-make clean
 ```
 ### Windows (MinGW-64) (you will need to setup the VLC library in your windows host)
 ```bash
-gcc donut.c -o donut.exe -lvlc -lm
+make win
 ```
 ### MacOS
 if you have one and compiled the donut, send pull request about how to compile for MacOS
