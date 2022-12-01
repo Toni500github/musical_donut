@@ -22,35 +22,6 @@ if [[ -f $DIR/donut ]]; then
 fi
 }
 
-## check if you have installed libvlc-dev
-function detect_libvlc {
-  if [[ ! -d /usr/include/vlc || ! -f /usr/include/vlc/vlc.h ]]; then
-    printf "\e[1;31mPlease install libvlc-dev with your packages manager\n"
-    exit 1
-  else
-    printf "\e[1;32mlibvlc headers are installed! \n"
-    printf "\e[1;34mcompiling donut.c ... \n\n"
-  fi
-}
-
-## compile the donut.c file in the script directory
-function compile {
-  if [[ ! -f $DIR/donut.c ]]; then
-    printf "\e[1;31mdonut.c not found in this directory \n"
-    exit 1
-  else
-    gcc $DIR/donut.c -o $DIR/donut -lm -lvlc
-  fi
-
-## this will detect if donut is there after compiling
-  if [[ ! -f $DIR/donut ]]; then
-    printf " \e[1;31mdonut not compiled successfully \n"
-    exit 1
-  else
-    printf "\e[1;32mdonut compiled, now you can run ./donut \n\e[1;34mStarting donut...\e[0m\n"
-  fi
-}
-
 ## check if you are rumning android and Termux
 function detect_termux {
 arch=$(uname -o)
@@ -63,14 +34,48 @@ arch=$(uname -o)
   fi
 }
 
-## same thing with detect_libvlc but for termux
-function detect_libvlc_termux {
-  if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
-    printf "\e[1;31mPlease run pkg install vlc\n"
+## check if you have installed libvlc-dev
+function detect_libvlc {
+  if [[ ! -d /usr/include/vlc || ! -f /usr/include/vlc/vlc.h ]]; then
+    printf "\e[1;31mPlease install libvlc-dev and vlc with your packages manager\n"
     exit 1
   else
     printf "\e[1;32mlibvlc headers are installed! \n"
     printf "\e[1;34mcompiling donut.c ... \n\n"
+  fi
+}
+
+## same thing with detect_libvlc but for termux
+function detect_libvlc_termux {
+  if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
+    printf "\e[1;31mvlc not installed. \e[1;34mInstalling...\n"
+    pkg update
+    pkg reinstall vlc
+      if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
+      printf "\e[1;31mcouldn't install vlc"
+      exit 1
+      fi
+  else
+    printf "\e[1;32mlibvlc headers are installed! \n"
+    printf "\e[1;34mcompiling donut.c ... \n\n"
+  fi
+}
+
+## compile the donut.c file in the script directory
+function compile {
+  if [[ ! -f $DIR/donut.c ]]; then
+    printf "\e[1;31mdonut.c not found in this directory \n"
+    exit 1
+  else
+    cc $DIR/donut.c -o $DIR/donut -lm -lvlc
+  fi
+
+## this will detect if donut is there after compiling
+  if [[ ! -f $DIR/donut ]]; then
+    printf " \e[1;31mdonut not compiled successfully \n"
+    exit 1
+  else
+    printf "\e[1;32mdonut compiled, now you can run ./donut \n\e[1;34mStarting donut...\e[0m\n"
   fi
 }
 
