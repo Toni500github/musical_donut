@@ -48,15 +48,18 @@ function detect_libvlc {
 ## same thing with detect_libvlc but for termux
 function detect_libvlc_termux {
   if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
-    printf "\e[1;31mvlc not installed. \e[1;34mInstalling...\n"
+    printf "\e[1;31mvlc not installed. \e[1;34mInstalling vlc...\n"
     pkg update
     pkg reinstall vlc
       if [[ ! -d /data/data/com.termux/files/usr/include/vlc || ! -f /data/data/com.termux/files/usr/include/vlc/vlc.h ]]; then
       printf "\e[1;31mcouldn't install vlc"
       exit 1
+
+      else
+	detect_libvlc_termux
       fi
   else
-    printf "\e[1;32mlibvlc headers are installed! \n"
+    printf "\n\e[1;32mlibvlc headers are installed! \n"
     printf "\e[1;34mcompiling donut.c ... \n\n"
   fi
 }
@@ -75,7 +78,7 @@ function compile {
     printf " \e[1;31mdonut not compiled successfully \n"
     exit 1
   else
-    printf "\e[1;32mdonut compiled, now you can run ./donut \n\e[1;34mStarting donut...\e[0m\n"
+    printf "\n\e[1;32mdonut compiled, now you can run ./donut \n\e[1;34mStarting donut...\e[0m\n"
   fi
 }
 
