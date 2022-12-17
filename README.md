@@ -7,6 +7,7 @@ just some spinning 3D donut but with the option to choose which song you want to
 # Dependencies
 ```bash
 libvlc-dev vlc
+# for Termux: vlc
 ```
 # How to use/compile
 ### Linux/Termux
