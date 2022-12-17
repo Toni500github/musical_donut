@@ -19,7 +19,7 @@ libvlc_media_player_t *mp;
 
 void end()
 {
-    printf("Bye!\n");
+    printf("\nBye!\n");
     libvlc_media_player_stop(mp);
     libvlc_media_player_release(mp);
     libvlc_release(inst);
@@ -30,32 +30,40 @@ void end()
 int main(int argc, char* argv[])
 {
     libvlc_media_t *m;
+    char file_name[256];
+    float speed;
 
     /* Load the VLC engine */
     inst = libvlc_new (0, NULL);
-
+    
+    /* asking for the fike to play and speed */
     printf("Enter the name of the path and/or file you would like to play: ");
-    char file_name[256];
     scanf("%s", file_name);
     printf("%s\n", file_name);
-    m = libvlc_media_new_path (inst, file_name);
+    
+    printf("Insert speed: ");
+    scanf("%f", &speed);
+    if (speed == 0){
+      printf("%s\n", "not valid speed");
+      return 1;
+    }
 
     /* Create a media player playing environement */
+    m = libvlc_media_new_path (inst, file_name);
     mp = libvlc_media_player_new_from_media (m);
     signal(SIGINT, end);
     signal(SIGTERM, end);
+    
     /* No need to keep the media now */
     libvlc_media_release (m);
-
+    
+    /* The Donut */
     float A = 0, B = 0;
     float i, j;
     int k;
     float z[1760];
     char b[1760];
-    float input;
-    printf("Insert speed: ");
-    scanf("%f", &input);
-    float Xspeed = input / 100;
+    float Xspeed = speed / 100;
     float Yspeed = Xspeed / 2;
     printf("\n%f\n", Xspeed);
     libvlc_media_player_play(mp);
