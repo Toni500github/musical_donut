@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
     
     printf("Insert speed: ");
     scanf("%f", &speed);
-    if (speed <= 0){
+    if (speed == 0){
       printf("%s\n", "not valid speed");
       return 1;
     }
