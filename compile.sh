@@ -16,7 +16,7 @@ if [[ -f $DIR/donut ]]; then
     rm $DIR/donut
  ;;
     n|N|NO|no|nO|No|nope|NOPE|o|O)
-    printf "\e[1;32mdonut not overwrite\n"
+    printf "\e[1;32mdonut will not be overwritten\n"
     exit 0
   esac
 fi
@@ -60,17 +60,17 @@ function detect_libvlc_termux {
       fi
   else
     printf "\n\e[1;32mlibvlc headers are installed! \n"
-    printf "\e[1;34mcompiling donut.c ... \n\n"
+    printf "\e[1;34mcompiling main.c ... \n\n"
   fi
 }
 
 ## compile the donut.c file in the script directory
 function compile {
-  if [[ ! -f $DIR/donut.c ]]; then
-    printf "\e[1;31mdonut.c not found in this directory \n"
+  if [[ ! -f $DIR/main.c ]]; then
+    printf "\e[1;main.c not found in this directory \n"
     exit 1
   else
-    cc $DIR/donut.c -o $DIR/donut -lm -lvlc
+    cc $DIR/main.c -o $DIR/donut -lm -lvlc
   fi
 
 ## this will detect if donut is there after compiling
