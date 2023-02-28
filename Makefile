@@ -8,4 +8,4 @@ clean:
 	rm -f $(DONUT) $(DONUT_WIN)
 
 win:
-	cc donut.c $(LDLIBS) -o $(DONUT_WIN)
+	cc main.c $(LDLIBS) -o $(DONUT_WIN)
