@@ -41,7 +41,7 @@ function detect_libvlc {
     exit 1
   else
     printf "\e[1;32mlibvlc headers are installed! \n"
-    printf "\e[1;34mcompiling donut.c ... \n\n"
+    printf "\e[1;34mcompiling main.c ... \n\n"
   fi
 }
 
@@ -64,7 +64,7 @@ function detect_libvlc_termux {
   fi
 }
 
-## compile the donut.c file in the script directory
+## compile the main.c file in the script directory
 function compile {
   if [[ ! -f $DIR/main.c ]]; then
     printf "\e[1;main.c not found in this directory \n"
