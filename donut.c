@@ -14,12 +14,12 @@
 #include <vlc/vlc.h>
 #include <signal.h>
 
-libvlc_instance_t * inst;
+libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
 
 void end()
 {
-    printf("Bye!\n");
+    printf("\nBye!\n");
     libvlc_media_player_stop(mp);
     libvlc_media_player_release(mp);
     libvlc_release(inst);
@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
     /* Load the VLC engine */
     inst = libvlc_new (0, NULL);
 
+    /* ask for the path/file you want to play */
     printf("Enter the name of the path and/or file you would like to play: ");
     char file_name[256];
     scanf("%s", file_name);
@@ -42,19 +43,25 @@ int main(int argc, char* argv[])
 
     /* Create a media player playing environement */
     mp = libvlc_media_player_new_from_media (m);
+
+    /* ask for the donut rotation speed */
+    float input;
+    printf("Insert speed: ");
+    scanf("%f", &input);
+
+    /* if pressed CTRL+C (aka interrupt) it will execute the void end and free memory */
     signal(SIGINT, end);
     signal(SIGTERM, end);
+    
     /* No need to keep the media now */
     libvlc_media_release (m);
 
+    /* the donut rotation */
     float A = 0, B = 0;
     float i, j;
     int k;
     float z[1760];
     char b[1760];
-    float input;
-    printf("Insert speed: ");
-    scanf("%f", &input);
     float Xspeed = input / 100;
     float Yspeed = Xspeed / 2;
     printf("\n%f\n", Xspeed);
