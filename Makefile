@@ -1,8 +1,9 @@
-LDLIBS := -lm -lvlc
+LDLIBS := `pkg-config --libs portaudiocpp sndfile`
 DONUT := donut
 DONUT_WIN := donut.exe
 
-all: $(DONUT); ./$(DONUT)
+all:
+	cc donut.c -o $(DONUT) $(LDLIBS)
 
 clean:
 	rm -f $(DONUT) $(DONUT_WIN)
