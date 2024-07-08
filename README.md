@@ -23,7 +23,7 @@ make
 make win
 ```
 ### MacOS
-if you have one and compiled the donut, send pull request about how to compile for MacOS
+if you have a Mac and compiled the donut, send pull request about how to compile for MacOS
 
-# Know bugs
+# Known bugs
 * No bugs 💯💯
